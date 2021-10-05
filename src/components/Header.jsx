@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 import ProfileIcon from './ProfileIcon';
 import SearchBar from './SearchBar';
 import searchSvg from '../images/searchIcon.svg';
@@ -65,21 +65,23 @@ const Header = () => {
 
   return (
     <header>
-      <Row className="header">
-        <Col><ProfileIcon /></Col>
-        <Col><h1 data-testid="page-title">{ headerTitle }</h1></Col>
-        <Col>
-          { searchIcon
-            && <img
-              role="presentation"
-              data-testid="search-top-btn"
-              src={ searchSvg }
-              alt="search-btn"
-              onClick={ () => setSearchBar(!searchBar) }
-            /> }
-        </Col>
-      </Row>
-      { searchBar && <SearchBar /> }
+      <Container as="main">
+        <Row className="header">
+          <Col><ProfileIcon /></Col>
+          <Col><h1 data-testid="page-title">{ headerTitle }</h1></Col>
+          <Col>
+            { searchIcon
+              && <img
+                role="presentation"
+                data-testid="search-top-btn"
+                src={ searchSvg }
+                alt="search-btn"
+                onClick={ () => setSearchBar(!searchBar) }
+              /> }
+          </Col>
+        </Row>
+        { searchBar && <SearchBar /> }
+      </Container>
     </header>
   );
 };
